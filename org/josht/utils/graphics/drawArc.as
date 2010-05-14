@@ -31,7 +31,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-package org.josht.utils.drawing
+package org.josht.utils.graphics
 {
 	import flash.display.Graphics;
 	import flash.geom.Point;
