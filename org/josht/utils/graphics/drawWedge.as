@@ -50,11 +50,11 @@ package org.josht.utils.graphics
 	 * @param centerX		x component of the wedge's center point
 	 * @param centerY		y component of the wedge's center point
 	 * @param startDegrees	Starting angle, in degrees
-	 * @param arc			Sweep of the wedge. Negative values draw clockwise.
+	 * @param arcDegrees			Sweep of the wedge. Negative values draw clockwise.
 	 * @param radius		Radius of the wedge. If the optional yRadius is defined, then radius is the x-axis radius.
 	 * @param yRadius		The y-axis radius for wedge.
 	 */
-	public function drawWedge(target:Graphics, centerX:Number, centerY:Number, startDegrees:Number, arc:Number, radius:Number, yRadius:Number = NaN):void
+	public function drawWedge(target:Graphics, centerX:Number, centerY:Number, startDegrees:Number, arcDegrees:Number, radius:Number, yRadius:Number = NaN):void
 	{
 		// move to x,y position
 		target.moveTo(centerX, centerY);
@@ -66,18 +66,18 @@ package org.josht.utils.graphics
 		}
 		
 		// limit sweep to reasonable numbers
-		if(Math.abs(arc) > 360)
+		if(Math.abs(arcDegrees) > 360)
 		{
-			arc = 360;
+			arcDegrees = 360;
 		}
 		
 		// Flash uses 8 segments per circle, to match that, we draw in a maximum
 		// of 45 degree segments. First we calculate how many segments are needed
-		// for our arc.
-		var segs:int = Math.ceil(Math.abs(arc) / 45);
+		// for our arcDegrees.
+		var segs:int = Math.ceil(Math.abs(arcDegrees) / 45);
 		
 		// Now calculate the sweep of each segment.
-		var segAngle:Number = arc / segs;
+		var segAngle:Number = arcDegrees / segs;
 		
 		// The math requires radians rather than degrees. To convert from degrees
 		// use the formula (degrees/180)*Math.PI to get radians.
